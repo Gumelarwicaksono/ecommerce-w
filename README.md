@@ -33,3 +33,22 @@ Mern stack ecomerce
 1. create rating component
 2. create product component
 3. use rating component in product component
+
+# create product ditail
+
+1. fetch roduct from backand
+2. create 3 columns for images,info and action
+
+# create loading and message component
+
+1. create loading component
+2. use spiner component
+3. create message component
+4. create utils.js to define getError function
+
+# implement add to cart
+
+1. create react context
+2. define reducer
+3. create store provaider
+4. implement add to cart button click handler

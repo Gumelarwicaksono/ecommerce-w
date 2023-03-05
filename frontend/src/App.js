@@ -15,7 +15,7 @@ function App() {
           </nav>
         </header>
         <main>
-          <div className="container">
+          <div className="container mt-2">
             <Routes>
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/" element={<HomeScreen />} />
@@ -23,10 +23,10 @@ function App() {
           </div>
         </main>
         <footer>
-          <div class="card">
-            <div class="card-header">ecomerce-w</div>
-            <div class="card-body text-center">
-              <h5 class="card-title text-success">2023 - All Rights Reserved</h5>
+          <div className="card">
+            <div className="card-header">ecomerce-w</div>
+            <div className="card-body text-center">
+              <h5 className="card-title text-success">2023 - All Rights Reserved</h5>
             </div>
           </div>
         </footer>

@@ -17,6 +17,9 @@ main {
   flex-wrap: wrap;
   justify-content: center;
 }
+.rating span {
+  color: #ffc000;
+}
 .product {
   border: 1px solid black;
   margin: 1rem;
