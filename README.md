@@ -1,6 +1,7 @@
-Mern stack ecomerce
+#Mern stack ecomerce-w
 
-#========= mern ===============
+# LESSON
+
 1.INSTALL TOOLS
 2.CREATE REACT APP
 3.CREATE REPOSITORI GITHUB
@@ -52,3 +53,21 @@ Mern stack ecomerce
 2. define reducer
 3. create store provaider
 4. implement add to cart button click handler
+
+#complete add to card
+
+1. ceck exist item in the cart
+2. check count stock in backand
+
+## create signin scren
+
+1. create signin in from
+2. add email and password
+3. add signin butoon
+
+##connect to mongodb database
+
+1. create atlas mongodb database
+2. install local mongodb database
+3. npm i mongose
+4. connect to mongodb database

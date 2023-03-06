@@ -1,11 +1,12 @@
 import axios from 'axios';
-import React, { useEffect, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api';
 import LodingBox from '../components/LodingBox';
 import MessageBox from '../components/MessageBox';
 import Rating from '../components/Rating';
+import { Store } from '../Store';
 import { getError } from '../utils';
 
 const reducer = (state, action) => {
@@ -24,6 +25,7 @@ const reducer = (state, action) => {
 const ProductScreen = () => {
   const params = useParams();
   const { slug } = params;
+  const navigate = useNavigate();
 
   const [{ loading, error, product }, dispatch] = useReducer(reducer, {
     product: [],
@@ -43,6 +45,21 @@ const ProductScreen = () => {
     };
     data();
   }, [slug]);
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart } = state;
+
+  const addToCartHandler = async () => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`${api}/api/products/${product._id}`);
+    if (data.countInStock < quantity) {
+      window.alert('Sorry, Product is out of stock');
+      return;
+    }
+    ctxDispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    navigate('/cart');
+  };
   return loading ? (
     <LodingBox />
   ) : error ? (
@@ -85,7 +102,9 @@ const ProductScreen = () => {
                 {product.countInStock > 0 && (
                   <li className="list-group-item">
                     <div className="d-grid">
-                      <div className="btn btn-primary">add to card</div>
+                      <button onClick={addToCartHandler} className="btn btn-primary">
+                        add to card
+                      </button>
                     </div>
                   </li>
                 )}
