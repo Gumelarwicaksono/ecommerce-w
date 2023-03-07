@@ -71,3 +71,11 @@
 2. install local mongodb database
 3. npm i mongose
 4. connect to mongodb database
+
+## send sample data
+
+1. create product module
+2. create User module
+3. create seed route
+4. use route in server.js
+5. seed sample product
