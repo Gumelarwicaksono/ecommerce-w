@@ -65,7 +65,7 @@
 2. add email and password
 3. add signin butoon
 
-##connect to mongodb database
+## connect to mongodb database
 
 1. create atlas mongodb database
 2. install local mongodb database
@@ -79,3 +79,15 @@
 3. create seed route
 4. use route in server.js
 5. seed sample product
+
+## create login backand
+
+1. create login api
+2. install jsonwebtoken
+3. define generateToken
+
+## create login screen
+
+1. handle submit action
+2. save token in store add localstorage
+3. show user name i handler

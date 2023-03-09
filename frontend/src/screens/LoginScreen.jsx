@@ -1,32 +1,64 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { api } from '../api';
+import { Store } from '../Store.js';
+import { getError } from '../utils';
+import { toast } from 'react-toastify';
 
 const LoginScreen = () => {
+  const navigate = useNavigate();
+  // define redirect
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectInUrl ? redirectInUrl : '/';
+
+  //
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { userInfo } = state;
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post(`${api}/api/users/login`, {
+        email,
+        password,
+      });
+      ctxDispatch({ type: 'USER_LOGIN', payload: data });
+      localStorage.setItem('userInfo', JSON.stringify(data));
+      navigate(redirect || '/');
+    } catch (error) {
+      toast.error(getError(error));
+    }
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
   return (
     <div className="container small-container">
       <Helmet>
         <title>Login</title>
       </Helmet>
       <h3>Login</h3>
-      <form action="">
+      <form onSubmit={submitHandler}>
         <div className="mb-3 row">
-          <label for="email" className="col-sm-2 col-form-label">
-            Email
-          </label>
+          <label className="col-sm-2 col-form-label">Email</label>
           <div className="col-sm-10">
-            <input type="text" className="form-control" id="email" />
+            <input type="text" className="form-control" id="email" onChange={(e) => setEmail(e.target.value)} required />
           </div>
         </div>
         <div className="mb-3 row">
-          <label for="password" className="col-sm-2 col-form-label">
-            Password
-          </label>
+          <label className="col-sm-2 col-form-label">Password</label>
           <div className="col-sm-10">
-            <input type="password" className="form-control" id="password" />
+            <input type="password" className="form-control" id="password" onChange={(e) => setPassword(e.target.value)} required />
           </div>
         </div>
         <div className="mb-3">
