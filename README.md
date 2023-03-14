@@ -1,10 +1,9 @@
 # Mern stack ecomerce-w
 
-## material
+## create react app
 
-1. INSTALL TOOLS
-2. CREATE REACT APP
-3. CREATE REPOSITORI GITHUB
+1. crate react-app frontend
+2. create github repositori
 
 ## create server.js
 
@@ -102,3 +101,21 @@
 
 1. handle place order actions
 2. create order create api
+
+## create Order screen
+
+1. create backand api for order/:id
+2. fetch order api in frontend
+3. show order information in 2 columns
+
+## pay Order By PayPal
+
+1. generate paypal client id
+2. create api to return client id
+3. install react-paypal-js
+4. use paypalScriptProvider in index.js
+5. use usePaypalScript Reducer in orderscreen
+6. implement loadPaypalScript function
+7. render paypal button
+8. implement onApprove payment function
+9. create pay order api backand
