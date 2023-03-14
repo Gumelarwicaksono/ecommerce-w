@@ -16,10 +16,10 @@ const ShippingAdressScreen = () => {
       navigate('/login?redirect=/shipping');
     }
   }, [userInfo, navigate]);
-  const [name, setName] = useState(shippingAdress.name || '');
+  const [fullName, setFullName] = useState(shippingAdress.fullName || '');
   const [address, setAddress] = useState(shippingAdress.address || '');
   const [city, setCity] = useState(shippingAdress.city || '');
-  const [postalcode, setPostalCode] = useState(shippingAdress.postalcode || '');
+  const [postalCode, setPostalCode] = useState(shippingAdress.postalcode || '');
   const [country, setCountry] = useState(shippingAdress.country || '');
 
   //   const [name, setName] = useState('');
@@ -33,20 +33,20 @@ const ShippingAdressScreen = () => {
     ctxDispatch({
       type: 'SAVE_SHIPPING_ADDRESS',
       payload: {
-        name,
+        fullName,
         address,
         city,
-        postalcode,
+        postalCode,
         country,
       },
     });
     localStorage.setItem(
       'shippingAddress',
       JSON.stringify({
-        name,
+        fullName,
         address,
         city,
-        postalcode,
+        postalCode,
         country,
       })
     );
@@ -57,29 +57,29 @@ const ShippingAdressScreen = () => {
       <Helmet>
         <title>Shiping Adress</title>
       </Helmet>
-      <CheckoutSteps step1></CheckoutSteps>
+      <CheckoutSteps step1 step2></CheckoutSteps>
       <div className="container small-container">
         <h1 className="my-3">Shiping Adress</h1>
         <form onSubmit={submitHandler}>
           <div className="mb-3">
             <label className="form-label">full Name</label>
-            <input type="text" className="form-control" id="fullName" value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text" className="form-control" id="fullName" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
           </div>
           <div className="mb-3">
             <label className="form-label">Address</label>
-            <input type="text" className="form-control" id="address" value={address} onChange={(e) => setAddress(e.target.value)} />
+            <input type="text" className="form-control" id="address" value={address} onChange={(e) => setAddress(e.target.value)} required />
           </div>
           <div className="mb-3">
             <label className="form-label">city</label>
-            <input type="text" className="form-control" id="city" value={city} onChange={(e) => setCity(e.target.value)} />
+            <input type="text" className="form-control" id="city" value={city} onChange={(e) => setCity(e.target.value)} required />
           </div>
           <div className="mb-3">
             <label className="form-label">postal code</label>
-            <input type="text" className="form-control" id="postalcode" value={postalcode} onChange={(e) => setPostalCode(e.target.value)} />
+            <input type="text" className="form-control" id="postalcode" value={postalCode} onChange={(e) => setPostalCode(e.target.value)} required />
           </div>
           <div className="mb-3">
             <label className="form-label">country</label>
-            <input type="text" className="form-control" id="country" value={country} onChange={(e) => setCountry(e.target.value)} />
+            <input type="text" className="form-control" id="country" value={country} onChange={(e) => setCountry(e.target.value)} required />
           </div>
           <button type="submit" className="btn btn-primary mb-3">
             continue

@@ -91,3 +91,13 @@
 1. handle submit action
 2. save token in store add localstorage
 3. show user name i handler
+
+## create register screen
+
+1. create input froms
+2. handle submit
+3. create backand api
+
+## implemet place order actions
+1. handle place order actions
+2. create order create api

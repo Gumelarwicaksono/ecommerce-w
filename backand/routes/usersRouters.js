@@ -3,7 +3,6 @@ import expressAsyncHandler from 'express-async-handler';
 import bcrypt from 'bcryptjs';
 import { generateToken } from '../utils.js';
 import User from '../models/usersModel.js';
-import protect from '../middlewares.js';
 
 const userRouter = express.Router();
 
@@ -27,13 +26,25 @@ userRouter.post(
   })
 );
 
-// userRouter.get(
-//   '/profile',
-//   protect,
-//   expressAsyncHandler(async (req, res) => {
-//     res.send(req.user);
-//   })
-// );
+userRouter.post(
+  '/register',
+  expressAsyncHandler(async (req, res, next) => {
+    const newUser = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password),
+    });
+    const user = await newUser.save();
+    res.send({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      token: generateToken(user),
+    });
+    next();
+  })
+);
 
 export default userRouter;
 //

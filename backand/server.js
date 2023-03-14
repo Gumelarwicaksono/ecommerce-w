@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import startRoutes from './routes/startRoutes.js';
 import productRouter from './routes/productRouters.js';
 import userRouter from './routes/usersRouters.js';
+import orderRouter from './routes/orderRouters.js';
 
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use('/api/start', startRoutes);
 
 app.use('/api/products', productRouter);
 app.use('/api/users', userRouter);
+app.use('/api/orders', orderRouter);
 
 // error handler
 app.use((err, req, res, next) => {

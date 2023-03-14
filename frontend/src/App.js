@@ -8,6 +8,9 @@ import LoginScreen from './screens/LoginScreen';
 import ProductScreen from './screens/ProductScreen';
 import { Store } from './Store';
 import ShippingAdressScreen from './screens/ShippingAdressScreen';
+import RegisterScreen from './screens/RegisterScreen';
+import PaymentMetodScreen from './screens/PaymentMetodScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -17,6 +20,7 @@ function App() {
     ctxDispatch({ type: 'USER_LOGOUT' });
     localStorage.removeItem('userInfo');
     localStorage.removeItem('shippingAddress');
+    localStorage.removeItem('paymentMethod');
   };
   return (
     <BrowserRouter>
@@ -25,8 +29,8 @@ function App() {
         <header>
           <nav className="navbar bg-light  ">
             <div className="container  ">
-              <Link className="navbar-brand text-success fw-bold" to="/">
-                ecommerce-w
+              <Link className="navbar-brand  fw-bold" to="/">
+                <span className="text-primary">ecom</span>merce-w
               </Link>
               <div className="nav">
                 <Link className="nav-item position-relative mt-2 " to="/cart">
@@ -74,16 +78,18 @@ function App() {
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen />} />
               <Route path="/login" element={<LoginScreen />} />
+              <Route path="/register" element={<RegisterScreen />} />
               <Route path="/" element={<HomeScreen />} />
               <Route path="/shipping" element={<ShippingAdressScreen />} />
+              <Route path="/payment" element={<PaymentMetodScreen />} />
+              <Route path="/placeorder" element={<PlaceOrderScreen />} />
             </Routes>
           </div>
         </main>
         <footer>
           <div className="card">
-            <div className="card-header">ecomerce-w</div>
             <div className="card-body text-center">
-              <h5 className="card-title text-success">2023 - All Rights Reserved</h5>
+              <h6 className="card-title ">2023 - All Rights Reserved</h6>
             </div>
           </div>
         </footer>
