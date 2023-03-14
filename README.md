@@ -1,12 +1,12 @@
-#Mern stack ecomerce-w
+# Mern stack ecomerce-w
 
-# LESSON
+## material
 
-1.INSTALL TOOLS
-2.CREATE REACT APP
-3.CREATE REPOSITORI GITHUB
+1. INSTALL TOOLS
+2. CREATE REACT APP
+3. CREATE REPOSITORI GITHUB
 
-# create server.js
+## create server.js
 
 1. run npm init (inisialisasi folder sebgai project nodejs)
 2. update package.json set type: menjadi module
@@ -21,7 +21,7 @@
 11. return product
 12. run npm start
 
-# fetch products from backand
+## fetch products from backand
 
 1. set proxy in package.json
 2. npm i axios
@@ -29,32 +29,32 @@
 4. use effect hook
 5. use reducer
 
-# Create product and rating component
+## Create product and rating component
 
 1. create rating component
 2. create product component
 3. use rating component in product component
 
-# create product ditail
+## create product ditail
 
 1. fetch roduct from backand
 2. create 3 columns for images,info and action
 
-# create loading and message component
+## create loading and message component
 
 1. create loading component
 2. use spiner component
 3. create message component
 4. create utils.js to define getError function
 
-# implement add to cart
+## implement add to cart
 
 1. create react context
 2. define reducer
 3. create store provaider
 4. implement add to cart button click handler
 
-#complete add to card
+## complete add to card
 
 1. ceck exist item in the cart
 2. check count stock in backand
@@ -99,5 +99,6 @@
 3. create backand api
 
 ## implemet place order actions
+
 1. handle place order actions
 2. create order create api
