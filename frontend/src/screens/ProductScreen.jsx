@@ -67,8 +67,8 @@ const ProductScreen = () => {
   ) : (
     <div>
       <div className="row">
-        <div className="col md-6">
-          <img className="img-large" src={product.image} alt={product.name} />
+        <div className="col-md-6 my-3">
+          <img className="w-100" src={product.image} alt={product.name} />
         </div>
         <div className="col md-3">
           <ul className="list-group list-group-flush">

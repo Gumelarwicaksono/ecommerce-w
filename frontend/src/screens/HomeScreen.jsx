@@ -50,11 +50,11 @@ const HomeScreen = () => {
         {loading ? (
           <LodingBox />
         ) : error ? (
-          <MessageBox className="alert alert-danger">{error}</MessageBox>
+          <MessageBox className="danger">{error}</MessageBox>
         ) : (
           <div className="row">
             {products.map((product) => (
-              <div key={product.slug} className="col col-sm-6 col-md-4 col-lg-3">
+              <div key={product.slug} className=" col-sm-6 col-md-4 col-lg-3">
                 <Product product={product} />
               </div>
             ))}

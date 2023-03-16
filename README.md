@@ -119,3 +119,9 @@
 7. render paypal button
 8. implement onApprove payment function
 9. create pay order api backand
+
+## display order history
+
+1. create orderscreen
+2. create order histori api
+3. use api in the frontend
