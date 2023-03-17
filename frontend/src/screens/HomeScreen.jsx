@@ -1,7 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import axios from 'axios';
 import { api } from '../api';
-import logger from 'use-reducer-logger';
 import Product from '../components/Product';
 import { Helmet } from 'react-helmet-async';
 import LodingBox from '../components/LodingBox';
@@ -21,7 +20,7 @@ const reducer = (state, action) => {
 };
 
 const HomeScreen = () => {
-  const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
+  const [{ loading, error, products }, dispatch] = useReducer(reducer, {
     products: [],
     loading: true,
     error: '',
